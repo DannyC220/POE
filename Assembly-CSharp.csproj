@@ -51,9 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\General.cs" />
      <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CameraZoom.cs" />
+     <Compile Include="Assets\Scripts\DistanceComparer.cs" />
      <Compile Include="Assets\Scripts\FactoryBuilding.cs" />
      <Compile Include="Assets\Scripts\GameEngine.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -61,6 +63,8 @@
      <Compile Include="Assets\Scripts\MeleeUnit.cs" />
      <Compile Include="Assets\Scripts\RangedUnit.cs" />
      <Compile Include="Assets\Scripts\ResourceBuilding.cs" />
+     <Compile Include="Assets\Scripts\Sense.cs" />
+     <Compile Include="Assets\Scripts\SpawnUnits.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\WizardUnit.cs" />
  <Reference Include="UnityEngine.UI">

@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         FillGrass();
         FillUnits(eng.map.MarrUnits);
         FillUnits(eng.map.RarrUnits);
+        //Vikings();
         FillUnits(eng.map.WarrUnits);
         FillFactory(eng.map.Fact);
         FillResources(eng.map.Res);
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
         
 
     }
+
+
 
     void FillUnits(MeleeUnit[] marrUnits)
     {
@@ -97,11 +100,12 @@ public class GameManager : MonoBehaviour
 
     void FillUnits(WizardUnit[] warrUnits)
     {
-        for(int j =0; j < eng.map.warrUnits.Length;j++)
+        for (int j = 0; j < eng.map.warrUnits.Length; j++)
         {
-            if(eng.map.warrUnits[j]!=null)
+            if (eng.map.warrUnits[j] != null)
             {
                 Instantiate(Resources.Load("wizards"), new Vector3(xOff + (warrUnits[j].XPosition * Padding), yOff + (-warrUnits[j].YPosition * Padding), -1), Quaternion.identity);
+                Instantiate(Resources.Load(DetermineHP(eng.map.warrUnits[j].Hp, eng.map.warrUnits[j].MaxHP)), new Vector3(xOff + (eng.map.warrUnits[j].XPosition * Padding), yOff + (-eng.map.warrUnits[j].YPosition * Padding), -2), Quaternion.identity);
             }
         }
     }
@@ -115,6 +119,17 @@ public class GameManager : MonoBehaviour
             Instantiate(Resources.Load("FactoryBuilding"), new Vector3(xOff + (fact[j].XPosition * Padding), yOff + (-fact[j].YPosition * Padding), -1), Quaternion.identity);
             Instantiate(Resources.Load(DetermineHP(fact[j].Hp, fact[j].MaxHp)), new Vector3(xOff + (fact[j].XPosition * Padding), yOff + (-fact[j].YPosition * Padding), -2), Quaternion.identity);
 
+        }
+
+
+    }
+
+    void FillOtherFactory(FactoryBuilding[] othfact)
+    {
+        for (int j = 0; j < eng.map.fact.Length; j++)
+        {
+            Instantiate(Resources.Load("RogueFactory"), new Vector3(xOff + (othfact[j].XPosition * Padding), yOff + (-othfact[j].YPosition * Padding), -1), Quaternion.identity);
+            Instantiate(Resources.Load(DetermineHP(othfact[j].Hp, othfact[j].MaxHp)), new Vector3(xOff + (othfact[j].XPosition * Padding), yOff + (-othfact[j].YPosition * Padding), -2), Quaternion.identity);
         }
     }
 
@@ -130,7 +145,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    //void Vikings()
+    //{
+    //    for (int k = 0; k< 3; k++)
+    //    {
+    //        for (int j = 0; j < 3; j++)
+    //        {
+    //            Instantiate(Resources.Load("viking"), new Vector3(xOff +  (j * Padding), yOff + (-k * Padding), 0), Quaternion.identity);
+    //        }
+    //    }
+    //}
 
     void FillGrass()
     {
@@ -147,11 +171,12 @@ public class GameManager : MonoBehaviour
 
     void reDraw()
     {
-        DestroyAll();
+        //DestroyAll();
 
 
         FillUnits(eng.map.MarrUnits);
         FillUnits(eng.map.RarrUnits);
+        //Vikings();
         FillUnits(eng.map.warrUnits);
         FillFactory(eng.map.Fact);
         FillResources(eng.map.Res);
@@ -178,39 +203,39 @@ public class GameManager : MonoBehaviour
 
 
         //code used initially for implentation of redraw
-        //for (int k = 0; k < eng.map.marrUnits.Length; k++)
-        //{
-        //    if (eng.map.marrUnits[k] != null)
-        //    {
-        //        if (eng.map.marrUnits[k].Symbol == "M")
-        //        {
-        //            Instantiate(Resources.Load("rogue"), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -1), Quaternion.identity);
-        //            Instantiate(Resources.Load(DetermineHP(eng.map.marrUnits[k].Hp, eng.map.marrUnits[k].MaxHP)), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -2), Quaternion.identity);
+        for (int k = 0; k < eng.map.marrUnits.Length; k++)
+        {
+            if (eng.map.marrUnits[k] != null)
+            {
+                if (eng.map.marrUnits[k].Symbol == "M")
+                {
+                    Instantiate(Resources.Load("rogue"), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -1), Quaternion.identity);
+                    Instantiate(Resources.Load(DetermineHP(eng.map.marrUnits[k].Hp, eng.map.marrUnits[k].MaxHP)), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -2), Quaternion.identity);
 
-        //        }
-        //        else if (eng.map.marrUnits[k].Symbol == "m")
-        //        {
-        //            Instantiate(Resources.Load("rogue"), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -1), Quaternion.identity);
-        //            Instantiate(Resources.Load(DetermineHP(eng.map.marrUnits[k].Hp, eng.map.marrUnits[k].MaxHP)), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -2), Quaternion.identity);
-        //        }
-        //    }
-        //}
-        //for (int j = 0; j < eng.map.rarrUnits.Length; j++)
-        //{
-        //    if (eng.map.rarrUnits[j] != null)
-        //    {
-        //        if (eng.map.rarrUnits[j].Symbol == "R")
-        //        {
-        //            Instantiate(Resources.Load("viking"), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -1), Quaternion.identity);
-        //            Instantiate(Resources.Load(DetermineHP(eng.map.rarrUnits[j].Hp, eng.map.rarrUnits[j].MaxHP)), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -2), Quaternion.identity);
-        //        }
-        //        else if (eng.map.rarrUnits[j].Symbol == "r")
-        //        {
-        //            Instantiate(Resources.Load("viking"), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -1), Quaternion.identity);
-        //            Instantiate(Resources.Load(DetermineHP(eng.map.rarrUnits[j].Hp, eng.map.rarrUnits[j].MaxHP)), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -2), Quaternion.identity);
-        //        }
-        //    }
-        //}
+                }
+                else if (eng.map.marrUnits[k].Symbol == "m")
+                {
+                    Instantiate(Resources.Load("rogue"), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -1), Quaternion.identity);
+                    Instantiate(Resources.Load(DetermineHP(eng.map.marrUnits[k].Hp, eng.map.marrUnits[k].MaxHP)), new Vector3(xOff + (eng.map.marrUnits[k].XPosition * Padding), yOff + (-eng.map.marrUnits[k].YPosition * Padding), -2), Quaternion.identity);
+                }
+            }
+        }
+        for (int j = 0; j < eng.map.rarrUnits.Length; j++)
+        {
+            if (eng.map.rarrUnits[j] != null)
+            {
+                if (eng.map.rarrUnits[j].Symbol == "R")
+                {
+                    Instantiate(Resources.Load("viking"), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -1), Quaternion.identity);
+                    Instantiate(Resources.Load(DetermineHP(eng.map.rarrUnits[j].Hp, eng.map.rarrUnits[j].MaxHP)), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -2), Quaternion.identity);
+                }
+                else if (eng.map.rarrUnits[j].Symbol == "r")
+                {
+                    Instantiate(Resources.Load("viking"), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -1), Quaternion.identity);
+                    Instantiate(Resources.Load(DetermineHP(eng.map.rarrUnits[j].Hp, eng.map.rarrUnits[j].MaxHP)), new Vector3(xOff + (eng.map.rarrUnits[j].XPosition * Padding), yOff + (-eng.map.rarrUnits[j].YPosition * Padding), -2), Quaternion.identity);
+                }
+            }
+        }
 
 
 
@@ -227,17 +252,22 @@ public class GameManager : MonoBehaviour
         return returnVal;
     }
 
-    void DestroyAll()
+    private void Move()
     {
-        GameObject[] killAllUnits = GameObject.FindGameObjectsWithTag("reDraw");
-
-        foreach (GameObject unit in killAllUnits)
-        {
-            Destroy(unit);
-        }
-        CheckDeath();
 
     }
+
+    //void DestroyAll()
+    //{
+    //    GameObject[] killAllUnits = GameObject.FindGameObjectsWithTag("reDraw");
+
+    //    foreach (GameObject unit in killAllUnits)
+    //    {
+    //        Destroy(unit);
+    //    }
+    //    CheckDeath();
+
+    //}
 
     void CheckDeath()
     {
