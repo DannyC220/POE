@@ -103,6 +103,7 @@ class Map
             {
                 res[j] = new ResourceBuilding(r.Next(0, 20), r.Next(0, 20), "rogue", "r");
                 fact[j] = new FactoryBuilding(r.Next(0, 20), r.Next(0, 20), "viking", "f");
+                res[j] = new ResourceBuilding(r.Next(0, 20), r.Next(0, 20), "wizard", "r");
             }
         }
 

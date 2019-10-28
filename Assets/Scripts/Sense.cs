@@ -13,10 +13,10 @@ public class Sense : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, checkRadius, checklayers);
         Array.Sort(colliders, new DistanceComparer(transform));
 
-        foreach (Collider item  in colliders)
+        foreach (Collider item in colliders)
         {
             Debug.Log(item.name);
-            if(item.gameObject.tag != this.tag)
+            if (item.gameObject.tag != this.tag)
             {
                 transform.LookAt(transform.position);
             }
@@ -27,5 +27,5 @@ public class Sense : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, checkRadius);
     }
-	
+
 }

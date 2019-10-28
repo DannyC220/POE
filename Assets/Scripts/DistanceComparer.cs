@@ -24,5 +24,5 @@ public class DistanceComparer : IComparer
 
         return xDistance.CompareTo(yDistance);
     }
-	
+
 }

@@ -124,14 +124,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void FillOtherFactory(FactoryBuilding[] othfact)
-    {
-        for (int j = 0; j < eng.map.fact.Length; j++)
-        {
-            Instantiate(Resources.Load("RogueFactory"), new Vector3(xOff + (othfact[j].XPosition * Padding), yOff + (-othfact[j].YPosition * Padding), -1), Quaternion.identity);
-            Instantiate(Resources.Load(DetermineHP(othfact[j].Hp, othfact[j].MaxHp)), new Vector3(xOff + (othfact[j].XPosition * Padding), yOff + (-othfact[j].YPosition * Padding), -2), Quaternion.identity);
-        }
-    }
+    
 
     void FillResources(ResourceBuilding[] res)
     {
@@ -171,7 +164,7 @@ public class GameManager : MonoBehaviour
 
     void reDraw()
     {
-        //DestroyAll();
+        DestroyAll();
 
 
         FillUnits(eng.map.MarrUnits);
@@ -257,17 +250,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //void DestroyAll()
-    //{
-    //    GameObject[] killAllUnits = GameObject.FindGameObjectsWithTag("reDraw");
+    void DestroyAll()
+    {
+        GameObject[] killAllUnits = GameObject.FindGameObjectsWithTag("reDraw");
 
-    //    foreach (GameObject unit in killAllUnits)
-    //    {
-    //        Destroy(unit);
-    //    }
-    //    CheckDeath();
+        foreach (GameObject unit in killAllUnits)
+        {
+            Destroy(unit);
+        }
+        CheckDeath();
 
-    //}
+    }
 
     void CheckDeath()
     {

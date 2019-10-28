@@ -13,14 +13,14 @@ public class SpawnUnits : MonoBehaviour {
     }
     void Update()
     {
-        if(counter % spawnCounter == 0)
+        if (counter % spawnCounter == 0)
         {
 
             GameObject newUnit = Instantiate(Unit);
             newUnit.transform.position = transform.position;
-           
+
         }
         counter++;
-        
+
     }
 }
