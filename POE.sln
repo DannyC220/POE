@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POE", "Assembly-CSharp.csproj", "{D9F028CF-E0FB-E5A5-0EFF-B11D9ECDF4DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9F028CF-E0FB-E5A5-0EFF-B11D9ECDF4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F028CF-E0FB-E5A5-0EFF-B11D9ECDF4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F028CF-E0FB-E5A5-0EFF-B11D9ECDF4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F028CF-E0FB-E5A5-0EFF-B11D9ECDF4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
